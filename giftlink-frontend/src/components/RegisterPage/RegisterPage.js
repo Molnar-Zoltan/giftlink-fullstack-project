@@ -63,8 +63,6 @@ function RegisterPage() {
                 setShowerr(json.error);
             }
             
-            // Task 6: Display error message to enduser.
-            <div className="text-danger">{showerr}</div>
 
         } 
         catch (e) {
@@ -130,6 +128,8 @@ function RegisterPage() {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
+                        {/* Step 2 - Task 6*/}
+                        <div className="text-danger">{ showerr }</div>
                         {/* insert code here to create a button that performs the `handleRegister` function on click */}
                         <button className="btn btn-primary w-100 mb-3" onClick={handleRegister}>Register</button>
                         <p className="mt-4 text-center">
