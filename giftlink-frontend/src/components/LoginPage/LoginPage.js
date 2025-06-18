@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './LoginPage.css';
 
 import { urlConfig } from '../../config'; //Task 1: Import urlConfig from `giftlink-frontend/src/config.js`
@@ -28,10 +28,11 @@ function LoginPage() {
 
 
     // insert code here to create handleLogin function and include console.log
-    const handleLogin = async () => {
+    const handleLogin = async (e) => {
+        e.preventDefault();
         try {
 
-            const response = await fetch(`/api/auth/login`, {
+            const res = await fetch(`${urlConfig.backendUrl}/api/auth/login`, {
                 //Task 7: Set method
                 method: 'POST',
 
@@ -69,12 +70,12 @@ function LoginPage() {
             else {
                 document.getElementById("email").value= "";
                 document.getElementById("password").value= "";
-                setIncorrect("Wrong password. Try again.");
+                setIncorrect("Wrong email or password. Try again.");
 
                 //Below is optional, but recommended - Clear out error message after 2 seconds
-                setTimeout(() => {
-                    setIncorrect("");
-                }, 2000);
+                // setTimeout(() => {
+                //     setIncorrect("");
+                // }, 2000);
 
 
             }
@@ -120,7 +121,7 @@ function LoginPage() {
                 </div>
 
                 {/* Step 2: Task 6 */}
-                <span style={{color:'red',height:'.5cm',display:'block',fontStyle:'italic',fontSize:'12px'}}>{incorrect}</span>
+                <div className="text-danger">{ incorrect }</div>
 
                 {/* insert code here to create a button that performs the `handleLogin` function on click */}
                 <button className="btn btn-primary w-100 mb-3" onClick={handleLogin}>Login</button>
