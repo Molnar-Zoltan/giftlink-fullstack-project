@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
         res.json(gifts);
     } catch (e) {
         console.error('Error fetching gifts:', e);
-        res.status(500).send('Error fetching gifts');
+        res.status(500).json({ message: 'Error fetching gifts' });
     }
 });
 
@@ -34,17 +34,17 @@ router.get('/:id', async (req, res) => {
 
         const id = req.params.id;
 
-        // Task 3: Find a specific gift by ID using the collection.fineOne method and store in constant called gift
-        const gift = collection.findOne({ id: id });
+        // Task 3: Find a specific gift by ID using the collection.findOne method and store in constant called gift
+        const gift = await collection.findOne({ id: id });
 
         if (!gift) {
-            return res.status(404).send('Gift not found');
+            return res.status(404).json({ message: 'Gift not found' });
         }
 
         res.json(gift);
     } catch (e) {
         console.error('Error fetching gift:', e);
-        res.status(500).send('Error fetching gift');
+        res.status(500).json({ message: 'Error fetching gift' });
     }
 });
 
