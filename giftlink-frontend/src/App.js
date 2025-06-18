@@ -9,6 +9,7 @@ import RegisterPage from './components/RegisterPage/RegisterPage';
 import SearchPage from './components/SearchPage/SearchPage';
 import DetailsPage from './components/DetailsPage/DetailsPage';
 import { AuthProvider } from './context/AuthContext';
+import Profile from './components/Profile/Profile';
 
 function App() {
 
@@ -17,12 +18,13 @@ function App() {
         <Navbar/>
         <Routes>
             {/* the final code will not pass the products to every page, but each page will call the server API */}
-            <Route path="/" element={<MainPage />} />
-            <Route path="/app" element={<MainPage />} />
-            <Route path="/app/login" element={<LoginPage />} />
-            <Route path="/app/register" element={<RegisterPage />} />
-            <Route path="/app/search" element={<SearchPage />} />
-            <Route path="/app/product/:productId" element={<DetailsPage />} />
+            <Route path="/" element={ <MainPage /> } />
+            <Route path="/app" element={ <MainPage /> } />
+            <Route path="/app/login" element={ <LoginPage /> } />
+            <Route path="/app/register" element={ <RegisterPage /> } />
+            <Route path="/app/search" element={ <SearchPage />} />
+            <Route path="/app/product/:productId" element={ <DetailsPage />} />
+            <Route path="/app/profile" element={ <Profile/> } />
         </Routes>
     </AuthProvider>
   );
